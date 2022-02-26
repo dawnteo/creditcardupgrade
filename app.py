@@ -29,39 +29,39 @@ def index():
         print(purchases, suppcard)
         model1 = joblib.load("CCU_DT")
         pred1 = model1.predict([[purchases,suppcard]])
-        if pred1 == 0:
+        if pred1[0] == 0:
             decision = "No"
         else: 
             decision = "Yes"
-        s1 = "The score of credit card upgrade base on decision tree is " + decision
+        s1 = "Predicted upgrading credit card decision based on Decision Tree is " + decision
         model2 = joblib.load("CCU_Reg")
-        pred2 = model1.predict([[purchases,suppcard]])
-        if pred2 == 0:
+        pred2 = model2.predict([[purchases,suppcard]])
+        if pred2[0] == 0:
             decision = "No"
         else: 
                 decision = "Yes"
-        s2 = "The score of credit card upgrade base on decision tree is " + decision
+        s2 = "Predicted upgrading credit card decision based on Linear Regression is " + decision
         model3 = joblib.load("CCU_NN")
-        pred3 = model1.predict([[purchases,suppcard]])
-        if pred3 == 0:
+        pred3 = model3.predict([[purchases,suppcard]])
+        if pred3[0] == 0:
             decision = "No"
         else: 
                 decision = "Yes"
-        s3 = "The score of credit card upgrade base on decision tree is " + decision
+        s3 = "Predicted upgrading credit card decision based on Neural Network is " + decision
         model4 = joblib.load("CCU_RF")
-        pred4 = model1.predict([[purchases,suppcard]])
-        if pred4 == 0:
+        pred4 = model4.predict([[purchases,suppcard]])
+        if pred4[0] == 0:
             decision = "No"
         else: 
                 decision = "Yes"
-        s4 = "The score of credit card upgrade base on decision tree is " + decision
+        s4 = "Predicted upgrading credit card decision based on Random Forest is " + decision
         model5 = joblib.load("CCU_GB")
-        pred5 = model1.predict([[purchases,suppcard]])
-        if pred5 == 0:
+        pred5 = model5.predict([[purchases,suppcard]])
+        if pred5[0] == 0:
             decision = "No"
         else: 
                 decision = "Yes"
-        s5 = "The score of credit card upgrade base on decision tree is " + decision
+        s5 = "Predicted upgrading credit card decision based on Gradient Boosting is " + decision
         return(render_template("index.html",result1=s1,result2=s2,result3=s3,result4=s4,result5=s5))
     else: 
         return(render_template("index.html",result1="2",result2="2",result3="2",result4="2",result5="2"))
